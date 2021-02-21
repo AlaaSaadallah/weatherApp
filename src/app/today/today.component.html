@@ -1,0 +1,171 @@
+<ul class="stars">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="cloud"></div>
+<div class="container">
+<div id="text">
+    <hr id="one">
+    <h1 id='h1'><em>Weather meter</em></h1>
+    <hr id="two">
+</div>
+
+<div class="letters"  >
+    Enter Your Location
+</div>
+<div class="form d-inline-flex justify-content-center " style="align-items: center;">
+    <input type="text" class="textbox" placeholder="City,Country" #userInput >
+    <button class="button" (click)='getCity(userInput.value)' (click)='toggle()' >
+        <i class="fas fa-search-location"></i></button>
+    </div>
+
+<div id="show" style="display: none;">
+<table class="table table-dark table-striped table-bordered table-sm" >
+    <tbody>
+        <tr>
+               <td colspan='2' style="text-align: center;">
+        
+            <span >Weather in {{ weather.name}}, {{ weather.sys.country}}</span>
+            <br>
+            <span class="temp"><img src="assets/{{ weather.weather[0].icon }}.png"> <br>
+                {{ weather.weather[0].description}} <br>
+            {{ (weather.main.temp_min -32)/1.8 | number: '1.0-0'}} &#176; ~ {{ (weather.main.temp_max -32)/1.8 | number: '1.0-0'}} &#176; <br>
+           RealFeel {{ (weather.main.temp -32)/1.8 | number: '1.0-0'}} &#176;C <br>
+        </span>
+    </td>
+    <td rowspan="8">
+        <agm-map [latitude]='lat' [longitude]='lon'  >
+            <agm-marker [latitude]='lat' [longitude]='lon'></agm-marker>
+    </agm-map>
+</td>
+</tr>
+<tr>
+            <td >Humidity</td>
+            <td>{{weather.main.humidity}}%</td>
+        </tr>
+        <tr>
+            <td>Wind</td>
+            <td>{{weather.wind.speed}}meter/sec</td>
+        </tr>
+        <tr>
+            <td>Pressure</td>
+            <td>{{weather.main.pressure}}hpa</td>
+        </tr>
+        <tr>
+            <td>Sunrise</td>
+            <td>{{weather.sys.sunrise*1000 | date: 'H:mm'}}</td>
+        </tr>
+        <tr>
+            <td>Sunset</td>
+            <td>{{weather.sys.sunset*1000 | date: 'H:mm'}}</td>
+        </tr>
+        <tr>
+            <td>Geo Coords</td>
+            <td>{{weather.coord.lat}}, {{weather.coord.lon}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+
+</div>
